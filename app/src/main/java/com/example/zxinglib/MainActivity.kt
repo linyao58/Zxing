@@ -1,7 +1,9 @@
 package com.example.zxinglib
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.Intent
+import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -9,8 +11,10 @@ import com.example.zxing.QRCode
 import com.example.zxing.QRCodeActivity
 import com.permissionx.linyaodev.PermissionX
 import kotlinx.android.synthetic.main.activity_main.*
+import java.io.InputStream
 
 class MainActivity : AppCompatActivity() {
+    @SuppressLint("ResourceType")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -25,6 +29,15 @@ class MainActivity : AppCompatActivity() {
                         QRCode.start(this, 1)
                     }
             }
+
+        }
+
+        btu1.setOnClickListener {
+
+            val content = "哈哈哈哈"
+            val height = 600
+
+            img.setImageBitmap(QRCode.createQRCode(this, content, height, R.drawable.r_c))
 
         }
 
