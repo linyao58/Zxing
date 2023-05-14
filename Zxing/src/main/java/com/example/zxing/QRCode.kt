@@ -44,12 +44,12 @@ object QRCode {
 
 
     @RequiresApi(Build.VERSION_CODES.N)
-    fun codeResult(bitmap: Bitmap): Result{
+    fun codeResult(bitmap: Bitmap): com.google.zxing.Result{
         return setZxingResult(bitmap)
     }
 
     @RequiresApi(Build.VERSION_CODES.N)
-    fun setZxingResult(bitmap: Bitmap): Result{
+    fun setZxingResult(bitmap: Bitmap): com.google.zxing.Result{
         val picWidth: Int = bitmap.width
         val picHeight: Int = bitmap.height
         val pix = IntArray(picWidth * picHeight)
