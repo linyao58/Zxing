@@ -41,9 +41,9 @@ class QRCodeActivity: CaptureActivity() {
 
 //        返回上一个页面
         val cancellation = findViewById<ImageView>(R.id.cancellation)
-//        cancellation.setOnClickListener {
-//            onBackPressed()
-//        }
+        cancellation.setOnClickListener {
+            onBackPressed()
+        }
 
 //        进入相册
 
