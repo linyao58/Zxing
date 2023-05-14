@@ -1,10 +1,18 @@
 package com.example.zxing
 
+import android.Manifest
+import android.content.Intent
+import android.os.Build
+import android.util.Log
+import androidx.annotation.RequiresApi
 import com.king.zxing.CameraScan
 import com.king.zxing.CaptureActivity
 import com.king.zxing.DecodeConfig
 import com.king.zxing.DecodeFormatManager
+import com.king.zxing.ViewfinderView.LaserStyle
 import com.king.zxing.analyze.MultiFormatAnalyzer
+import com.permissionx.linyaodev.PermissionX
+import kotlinx.android.synthetic.main.qr_code_activity.*
 
 class QRCodeActivity: CaptureActivity() {
 
@@ -28,6 +36,25 @@ class QRCodeActivity: CaptureActivity() {
             .setVibrate(true) //设置是否震动，默认为false
             .setNeedAutoZoom(true) //二维码太小时可自动缩放，默认为false
             .setAnalyzer(MultiFormatAnalyzer(decodeConfig)) //设置分析器,如果内置实现的一些分析器不满足您的需求，你也可以自定义去实现
+
+//        返回上一个页面
+        cancellation.setOnClickListener {
+            onBackPressed()
+        }
+
+//        进入相册
+
+        album.setOnClickListener {
+            PermissionX.request(this,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.READ_EXTERNAL_STORAGE){ allGranted, deniedList ->
+                if (allGranted){
+                    QRCode.sInstance?.let { it1 -> QRCode.albumStart(it1, 2) }
+                    finish()
+                }
+            }
+        }
+
     }
 
 
