@@ -4,6 +4,8 @@ import android.Manifest
 import android.content.Intent
 import android.os.Build
 import android.util.Log
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.annotation.RequiresApi
 import com.king.zxing.CameraScan
 import com.king.zxing.CaptureActivity
@@ -38,12 +40,14 @@ class QRCodeActivity: CaptureActivity() {
             .setAnalyzer(MultiFormatAnalyzer(decodeConfig)) //设置分析器,如果内置实现的一些分析器不满足您的需求，你也可以自定义去实现
 
 //        返回上一个页面
+        val cancellation = findViewById<ImageView>(R.id.cancellation)
         cancellation.setOnClickListener {
             onBackPressed()
         }
 
 //        进入相册
 
+        val album = findViewById<TextView>(R.id.album)
         album.setOnClickListener {
             PermissionX.request(this,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE,
