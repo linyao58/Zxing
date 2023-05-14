@@ -17,6 +17,7 @@ import java.util.*
 
 object QRCode {
 
+//    获得上一层的activity
     var sInstance: Activity? = null
 
     fun start(activity: Activity, requestCode: Int){
