@@ -33,6 +33,8 @@ class QRCodeActivity: CaptureActivity() {
             .setAreaRectVerticalOffset(0).areaRectHorizontalOffset =
             0 //设置识别区域水平方向偏移量，默认为0，为0表示居中，可以为负数
 
+
+
         //在启动预览之前，设置分析器，只识别二维码
         cameraScan
             .setVibrate(true) //设置是否震动，默认为false
